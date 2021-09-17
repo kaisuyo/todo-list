@@ -23,7 +23,7 @@ class Column extends React.Component {
 
         <div className="column__body">
           {this.props.tasks.map(task => (
-              <Task key={task.id} time={task.time} content={task.content} />
+              <Task delete={() => {this.props.delete(task.id)}} key={task.id} time={task.time} content={task.content} />
             ))
           }
         </div>

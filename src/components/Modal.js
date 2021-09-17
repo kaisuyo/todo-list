@@ -4,11 +4,13 @@ import './Modal.css';
 class Modal extends React.Component {
   constructor(props) {
     super(props);
+
+    this.taskContent = React.createRef();
   }
   
   render() {
     return (
-      <form className="modal">
+      <form className="modal" onSubmit={(e) => this.props.handleAddNewTask(e, this.taskContent.current.value)}>
         <div className="overlay" onClick={() => this.props.turnOffModal()}></div>
         <div className="modal__container">
           <h4 className="modal__header purple">
@@ -31,7 +33,7 @@ class Modal extends React.Component {
               </div>
             </div>
             <div className="modal__input">
-              <input type="text" placeholder="Enter your task..." required></input>
+              <input type="text" ref={this.taskContent} placeholder="Enter your task..." required></input>
             </div>
           </div>
           <div className="modal__btn">
