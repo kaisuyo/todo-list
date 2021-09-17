@@ -1,0 +1,46 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+}
+
+.App__title {
+  padding: 32px;
+}
+.App__body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.btn_purple {
+  background: #5e69f8;
+  color: #fff;
+}
+
+.red {
+  color: red;
+}
+
+.purple {
+  color: #5e69f8;
+}
+
+.btn_round {
+  border-radius: 50%;
+}
+
+.btn_outline {
+  border: 1px solid #777;
+  border-radius: 4px;
+}

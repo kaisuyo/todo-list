@@ -1,0 +1,74 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.modal__container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal__header {
+  padding: 0;
+  margin: 0;
+}
+
+.modal__body {
+  width: 100%;
+}
+
+.modal__radio {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal__input {
+  margin: 8px 0 28px;
+}
+
+.modal__input input {
+  padding: 8px;
+  width: 100%;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid #777;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.modal__btn {
+  text-align: right;
+}
+
+.modal__btn .btn {
+  padding: 6px 16px;
+  font-size: 15px;
+}
+
+.modal__btn .btn + .btn {
+  margin-left: 8px;
+}
+
+.modal {
+  animation: visibleAnimation 0.3s ease;
+}
+
+@keyframes visibleAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

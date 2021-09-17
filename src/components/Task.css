@@ -1,0 +1,40 @@
+.task__container {
+  background: #fff;
+  margin-top: 28px;
+  padding: 8px;
+  box-shadow: 0px 0px 3px rgba(119, 119, 119, 0.301);
+  border: #777;
+  border-radius: 4px;
+}
+
+.task__header {
+  color: #777;
+  font-size: small;
+}
+
+.task__body {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.task__content {
+  flex-grow: 1;
+  padding-right: 8px;
+  text-align: 1.4;
+}
+
+.task__option {
+  display: flex;
+}
+
+.task__option .btn {
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  transition: 0.3s linear;
+}
+
+.task__option .btn:hover {
+  background: #eae9ee;
+}
