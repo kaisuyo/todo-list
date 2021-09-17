@@ -1,6 +1,9 @@
+.Task {
+  padding-top: 28px;
+}
+
 .task__container {
   background: #fff;
-  margin-top: 28px;
   padding: 8px;
   box-shadow: 0px 0px 3px rgba(119, 119, 119, 0.301);
   border: #777;
@@ -24,8 +27,17 @@
   text-align: 1.4;
 }
 
+.task__content input {
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #777;
+}
+
 .task__option {
   display: flex;
+  margin-right: -8px;
 }
 
 .task__option .btn {
@@ -37,4 +49,24 @@
 
 .task__option .btn:hover {
   background: #eae9ee;
+}
+
+.task__overlay {
+  position: fixed;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.5);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation: vsb 0.5s ease;
+}
+
+@keyframes vsb {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

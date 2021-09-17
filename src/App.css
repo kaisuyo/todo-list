@@ -31,9 +31,14 @@
 .red {
   color: red;
 }
-
 .purple {
   color: #5e69f8;
+}
+.success {
+  color: #5dd190;
+}
+.secondary {
+  color: #777;
 }
 
 .btn_round {

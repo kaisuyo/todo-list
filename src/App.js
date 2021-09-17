@@ -6,6 +6,8 @@ import 'toastr/build/toastr.min.css';
 
 import { v4 as uuidv4 } from 'uuid';
 
+import { DragDropContext, droppable } from 'react-beautiful-dnd';
+
 import Column from './components/Column';
 import Modal from './components/Modal';
 
@@ -52,6 +54,7 @@ class App extends React.Component {
   }
 
   handleDeleteTask(columnID, taskID) {
+    if (!window.confirm("Are you sure to delete this task ?")) return;
     let { columns } = this.state;
     let selectedColumnIndex = columns.findIndex(col => col.id === columnID);
     let taksDeleteIndex = columns[selectedColumnIndex].tasks.findIndex(task => task.id === taskID);
@@ -60,7 +63,28 @@ class App extends React.Component {
     this.setState({
       isDisplayModal: false, 
       columns,
+    }, () => {
+      toastr.success("Delete task success", "Notice", {timeOut: 2000});
     });
+  }
+
+  handleEditTask(columnID, taskID, newContent) {
+    if (newContent.trim() === '') return toastr.warning("Pleace enter your task", "Notice", {timeOut: 2000});
+    let { columns } = this.state;
+    let selectedColumnIndex = columns.findIndex(col => col.id === columnID);
+    let taskIndex = columns[selectedColumnIndex].tasks.findIndex(task => task.id === taskID);
+    columns[selectedColumnIndex].tasks[taskIndex].content = newContent;
+
+    this.setState({
+      isDisplayModal: false, 
+      columns,
+    }, () => {
+      toastr.success("Edit success", "Success", {timeOut: 2000});
+    });
+  }
+
+  handleSaveDrag() {
+
   }
 
   render() {
@@ -68,16 +92,21 @@ class App extends React.Component {
       <div className="App">
         <div className="App__title purple">TO DO LIST</div>
         <div className="App__body">
-          {this.state.columns.map( column => (
+          <DragDropContext onDragEnd={() => this.handleSaveDrag()}>
+          {this.state.columns.map( (column, index) => (
             <Column 
               turnOnModal={() => {this.handleModal(column.id)}} 
               delete={(taskID) => this.handleDeleteTask(column.id, taskID)}
+              edit={(taskID, newContent) => {this.handleEditTask(column.id, taskID, newContent)}}
+              index={index}
               key={column.id} 
+              id={column.id}
               total={column.tasks.length} 
               title={column.title} 
               tasks={column.tasks} 
             />
           ))}
+          </DragDropContext>
         </div>
 
         {this.state.isDisplayModal && 

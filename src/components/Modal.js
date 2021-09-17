@@ -4,7 +4,6 @@ import './Modal.css';
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-
     this.taskContent = React.createRef();
   }
   
@@ -33,12 +32,12 @@ class Modal extends React.Component {
               </div>
             </div>
             <div className="modal__input">
-              <input type="text" ref={this.taskContent} placeholder="Enter your task..." required></input>
+              <input type="text" ref={this.taskContent} placeholder="Enter your task..." autoFocus required></input>
             </div>
           </div>
           <div className="modal__btn">
             <button type="submit" className="btn btn_purple">Save</button>
-            <button className="btn btn_outline">Cancel</button>
+            <button className="btn btn_outline" onClick={() => this.props.turnOffModal()}>Cancel</button>
           </div>
         </div>
       </form>
