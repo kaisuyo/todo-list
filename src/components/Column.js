@@ -11,24 +11,24 @@ class Column extends React.Component {
 
   render() {
     return (
-      <Droppable droppableId={this.props.id}>
-        {
-          provided => (
-            <div className="column__container"
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-            >
-              <div className="column__header">
-                <div className="column__header__left">
-                  <button className="btn btn_purple btn_round">{this.props.total}</button>
-                  <span className="column__header__title">{this.props.title}</span>
-                </div>
-                <div className="column__header__right">
-                  <button className="btn btn_purple" onClick={this.props.turnOnModal}>+ New task</button>
-                </div>
-              </div>
+      <div className="column__container">
+        <div className="column__header">
+          <div className="column__header__left">
+            <button className="btn btn_purple btn_round">{this.props.total}</button>
+            <span className="column__header__title">{this.props.title}</span>
+          </div>
+          <div className="column__header__right">
+            <button className="btn btn_purple" onClick={this.props.turnOnModal}>+ New task</button>
+          </div>
+        </div>
 
-              <div className="column__body">
+        <Droppable droppableId={this.props.id}>
+          {
+            provided => (
+              <div className="column__body"
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
                 {this.props.tasks.map((task, index) => (
                   <Task 
                     delete={() => {this.props.delete(task.id)}} 
@@ -40,12 +40,12 @@ class Column extends React.Component {
                     content={task.content} 
                   />
                 ))}
+                {provided.placeholder}
               </div>
-              {provided.placeholder}
-            </div>
-          )
-        }
-      </Droppable>
+            )
+          }
+        </Droppable>
+      </div>
     )
   }
 }

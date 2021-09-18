@@ -83,8 +83,19 @@ class App extends React.Component {
     });
   }
 
-  handleSaveDrag() {
+  handleSaveDrag(result) {
+    const { source, destination, reason } = result;
+    if (reason === 'DROP' && destination) {
+      let { columns } = this.state;
+      const sourceColumnIndex = columns.findIndex(col => col.id === source.droppableId);
+      const task = columns[sourceColumnIndex].tasks[source.index];
+      columns[sourceColumnIndex].tasks.splice(source.index, 1);
 
+      const destinationColumnIndex = columns.findIndex(col => col.id === destination.droppableId);
+      columns[destinationColumnIndex].tasks.splice(destination.index, 0, task);
+
+      this.setState({columns});
+    }
   }
 
   render() {
@@ -92,7 +103,7 @@ class App extends React.Component {
       <div className="App">
         <div className="App__title purple">TO DO LIST</div>
         <div className="App__body">
-          <DragDropContext onDragEnd={() => this.handleSaveDrag()}>
+          <DragDropContext onDragEnd={(result) => this.handleSaveDrag(result)}>
           {this.state.columns.map( (column, index) => (
             <Column 
               turnOnModal={() => {this.handleModal(column.id)}} 

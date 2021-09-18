@@ -5,9 +5,9 @@
 .task__container {
   background: #fff;
   padding: 8px;
-  box-shadow: 0px 0px 3px rgba(119, 119, 119, 0.301);
-  border: #777;
+  border: 1px solid rgba(119, 119, 119, 0.521);
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .task__header {
@@ -32,7 +32,7 @@
   width: 100%;
   font-size: 16px;
   border: none;
-  border-bottom: 1px solid #777;
+  border-bottom: 1px solid blueviolet;
 }
 
 .task__option {

@@ -8,10 +8,13 @@
 
 .App__title {
   padding: 32px;
+  font-weight: 600;
+  font-size: 18px;
 }
 .App__body {
   display: flex;
   flex-wrap: wrap;
+  height: 70vh;
 }
 
 .btn {

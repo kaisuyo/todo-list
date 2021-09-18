@@ -31,7 +31,7 @@ class Task extends React.Component {
                 !this.state.isEditing ? 
                 <div className="task__container">
                   <div className="task__header">
-                    <i className="fal fa-calendar-alt"></i>
+                    <i style={{width: '16px'}} className="fal fa-calendar-alt"></i>
                     <span>{this.props.time}</span>
                   </div>
                   <div className="task__body">
